@@ -1,0 +1,85 @@
+# ===========================
+# Student PDFs & Answer Sheets
+# ===========================
+handwritten_pipeline/student_pdfs/
+handwritten_pipeline/temp_extracted/
+handwritten_pipeline/Document from Mrunmayee Limaye.zip
+final_pipeline/input_papers/
+
+# ===========================
+# Student Data in Configs
+# ===========================
+handwritten_pipeline/configs/OS_End_Sem_w25_scores.csv
+handwritten_pipeline/configs/answer_key_os.json
+
+# ===========================
+# OCR Caches (MD5-hashed results)
+# ===========================
+final_pipeline/.ocr_cache/
+handwritten_pipeline/.ocr_cache/
+
+# ===========================
+# Extracted Text & Generated Output
+# ===========================
+final_pipeline/extracted_text/
+final_pipeline/output/
+handwritten_pipeline/output_handwritten/
+
+# ===========================
+# Datasets (large CSVs)
+# ===========================
+final_pipeline/datasets/
+
+# ===========================
+# Results Backups & Checkpoints
+# ===========================
+final_pipeline/results_backup/
+
+# ===========================
+# Logs
+# ===========================
+final_pipeline/logs/
+
+# ===========================
+# Internal Notes (copy in docs/)
+# ===========================
+final_pipeline/breif.txt
+
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ===========================
+# Virtual Environments
+# ===========================
+venv/
+.venv/
+env/
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.local
+
+# ===========================
+# IDE / Editor
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
