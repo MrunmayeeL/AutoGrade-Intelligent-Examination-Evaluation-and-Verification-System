@@ -1,0 +1,66 @@
+# ==========================================
+# HANDWRITTEN EVALUATION PIPELINE CONFIG
+# ==========================================
+
+paths:
+  # Path to the directory containing student handwritten PDF files
+  input_dir: "student_pdfs"
+  
+  # Root directory for pipeline outputs (extracted text, JSONs, scorecards, plots)
+  output_dir: "output_handwritten"
+  
+  # Path to the answer key JSON file (from the existing final_pipeline)
+  answer_key_file: "configs/answer_key_os.json"
+  
+  # Path to the final_pipeline directory
+  final_pipeline_dir: "../final_pipeline"
+  
+  # Directory to cache raw OCR results by file hash to save API costs
+  cache_dir: ".ocr_cache"
+  
+  # For Windows users: path to poppler bin/ directory (required by pdf2image)
+  # Leave null if poppler is already in system PATH
+  poppler_path: null
+
+pdf_preprocessing:
+  # DPI resolution for converting PDF pages to images (300 is recommended for OCR)
+  dpi: 300
+  
+  # Toggle image enhancement (contrast, brightness adjustments) before OCR
+  enhance_images: true
+  
+  # Contrast enhancement multiplier (1.0 = original, >1.0 = higher contrast)
+  contrast_factor: 1.5
+  
+  # Brightness enhancement multiplier (1.0 = original, >1.0 = brighter)
+  brightness_factor: 1.2
+
+ocr:
+  # Pluggable OCR engine to use: 'pixtral', 'paddleocr', or 'easyocr' (all use existing libraries, no new packages required)
+  engine_type: "pixtral"
+  
+  # The model to call for vision-based OCR (e.g. 'pixtral-large-latest' or 'pixtral-12b-latest')
+  model: "mistral-large-latest"
+  
+  # Languages list for offline OCR models (e.g. ['en'])
+  languages: ["en"]
+
+question_extraction:
+  # Method to segment transcription into individual question-wise answers
+  # 'regex'  : Fast and deterministic regex-based splitting
+  # 'llm'    : Use Mistral Large LLM to parse and structure raw text
+  # 'hybrid' : Try regex first, fallback to LLM if questions are missing or parsing fails
+  method: "hybrid"
+  
+  # Mistral model to use for LLM question extraction
+  llm_model: "mistral-large-latest"
+  
+  # Temperature for LLM extraction
+  temperature: 0.1
+
+grading:
+  # If a dataset with teacher marks is available, run quantitative evaluation
+  run_evaluation: true
+  
+  # Path to the ground truth CSV file containing teacher marks
+  ground_truth_csv: "configs/OS_End_Sem_w25_scores.csv"
